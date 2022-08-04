@@ -39,10 +39,8 @@ If Java 8 is needed, In the pom.xml, add the above two properties.
  </properties>
 ```
 
-### Method 3: Configure the Maven Compiler plugin
-Add the source and target while you configure the Maven compiler plugin in the pom.xml file.
-
-If Java 8 is needed, refer to the following code.
+### Method 3: Configure the Maven Compiler and JAR plugin
+Add the source and target while you configure the Maven compiler or Java plugin in the pom.xml file.
 ```xml
 <build>
   <plugins>
@@ -63,4 +61,25 @@ If Java 8 is needed, refer to the following code.
     </plugin>
   </plugins>
 </build>
+```
+```xml
+  <build>
+    <plugins>
+      <plugin> 
+        <groupId>org.apache.maven.plugins</groupId>  
+        <artifactId>maven-jar-plugin</artifactId>  
+        <version>3.1.0</version>  
+        <configuration>  
+          <encoding>UTF-8</encoding>
+          <source>1.8</source>
+          <target>1.8</target>
+          <archive>  
+            <manifest>  
+                <mainClass>com.daghan.App</mainClass>  
+            </manifest>  
+          </archive>  
+        </configuration>  
+      </plugin>  
+    </plugins>
+  </build>
 ```
